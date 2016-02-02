@@ -1,0 +1,69 @@
+/*Only needs to add sorting algorithm*/
+
+#include <iostream>
+#include <string>
+
+int upper[26];
+int lower[26];
+int sum[26];
+char output;
+
+void countLetterFrequency(std::string input);
+void outputLetterFrequency();
+
+
+int main(void)
+{
+    std::string input;
+
+    int numberOfInputs = 0;
+        
+    std::cin >> numberOfInputs;
+    std::cin.ignore();
+    
+    for(int i = 0; i < numberOfInputs; i++)
+    {
+        std::getline(std::cin, input);
+        countLetterFrequency(input);
+    }
+   
+    outputLetterFrequency();
+    
+    
+    return 0;
+}
+
+
+void countLetterFrequency(std::string input)
+{    
+    for(int i = 0; i < (int)input.size(); i++)
+    {
+        if (input[i] >= 'A' && input[i] <= 'Z')
+        {
+            upper[input[i]-65]++;
+        }
+        else if (input[i] >= 'a' && input[i] <= 'z')
+        {
+            lower[input[i]-97]++;
+        }
+    }
+    
+    //Sum up # of upper and lower
+    for(int i = 0; i < 26; i++)
+    {
+        sum[i] = upper[i] + lower[i];
+    }
+    
+}
+
+void outputLetterFrequency()
+{
+    for(int i = 0; i < 26; i++)
+    {
+        if (sum[i] != 0)
+        {
+            output = i + 65;
+            std::cout << output << " " << sum[i] << std::endl;
+        }
+    }
+}
