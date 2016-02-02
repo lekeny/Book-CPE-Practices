@@ -1,4 +1,6 @@
-/*Only needs to add sorting algorithm*/
+/* Ex. 6.1.1 @ pg103 */
+
+/* Completely Working! */
 
 #include <iostream>
 #include <string>
@@ -7,9 +9,10 @@ int upper[26];
 int lower[26];
 int sum[26];
 char output;
+int rearranged[26];
 
 void countLetterFrequency(std::string input);
-void outputLetterFrequency();
+void rearrangeAndOutputFrequency();
 
 
 int main(void)
@@ -27,8 +30,7 @@ int main(void)
         countLetterFrequency(input);
     }
    
-    outputLetterFrequency();
-    
+    rearrangeAndOutputFrequency();
     
     return 0;
 }
@@ -48,7 +50,6 @@ void countLetterFrequency(std::string input)
         }
     }
     
-    //Sum up # of upper and lower
     for(int i = 0; i < 26; i++)
     {
         sum[i] = upper[i] + lower[i];
@@ -56,14 +57,31 @@ void countLetterFrequency(std::string input)
     
 }
 
-void outputLetterFrequency()
+void rearrangeAndOutputFrequency()
 {
-    for(int i = 0; i < 26; i++)
+    int largest = -1;
+    int largestIndex = -1;
+    
+    for(int k = 0; k < 26; k++)
     {
-        if (sum[i] != 0)
+        for(int i = 0; i < 26; i++)
         {
-            output = i + 65;
-            std::cout << output << " " << sum[i] << std::endl;
+            if (sum[i] > largest)
+            {
+                largest = sum[i];
+                largestIndex = i;
+            }
         }
+        rearranged[k] = largest;
+        
+        if ( rearranged[k] != 0 )
+        {
+            output = largestIndex + 65;
+            std::cout << output << " " << largest << std::endl;
+        }
+        
+        sum[largestIndex] = 0;
+        largest = -1;   
+        largestIndex = -1;
     }
 }
