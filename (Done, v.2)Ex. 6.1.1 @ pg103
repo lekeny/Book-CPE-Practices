@@ -1,0 +1,47 @@
+/* Ex. 6.1.1 @ pg103 */
+/* Version 2, improved after looking at textbook's sample solution and make improvements out of it. */
+
+/* Completely Working! */
+
+#include <iostream>
+#include <string>
+
+int count[256];
+
+int main(void)
+{
+	std::string input;
+	int frequency = 0, numOfRepeats, index = 0;
+	char c;
+
+	std::cin >> numOfRepeats;
+	std::cin.ignore();
+
+	while (numOfRepeats--)
+	{
+		std::getline(std::cin, input);
+
+		while (input[index] != '\0')
+		{
+			count[toupper(input[index])]++;
+			index++;
+			frequency++;
+		}
+
+		index = 0;
+
+	}
+
+	for (; frequency > 0; frequency--)
+	{
+		for (c = 'A'; c <= 'Z'; c++)
+		{
+			if (count[c] == frequency)
+			{
+				std::cout << c << " " << count[c] << std::endl;
+			}
+		}
+	}
+
+	return 0;
+}
