@@ -1,0 +1,66 @@
+/* Ex. 6.1.2 @ pg105 */
+/* Version 1, done prior to looking at textbook's solution. */
+
+/* Completely Working */
+
+#include <iostream>
+#include <string>
+
+int main(void)
+{
+	char row1[100] = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=' }; //12 elements
+	char row2[100] = { 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\' }; //13 elements
+	char row3[100] = { 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';' , '\'' }; //11 elements
+	char row4[100] = { 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/' }; //10 elements
+
+	std::string input;
+	std::getline(std::cin, input);
+
+	for (int i = 0; i < (int)input.size(); i++)
+	{
+		for (int a = 0; a < 100; a++)
+		{
+			if (tolower(input[i]) == row1[a])
+			{
+				if (a - 2 < 0)
+				{
+					a += 12;
+				}
+				std::cout << row1[a - 2];
+			}
+			else if (tolower(input[i]) == row2[a])
+			{
+				if (a - 2 < 0)
+				{
+					a += 13;
+				}
+				std::cout << row2[a - 2];
+			}
+			else if (tolower(input[i]) == row3[a])
+			{
+				if (a - 2 < 0)
+				{
+					a += 11;
+				}
+				std::cout << row3[a - 2];
+			}
+			else if (tolower(input[i]) == row4[a])
+			{
+				if (a - 2 < 0)
+				{
+					a += 10;
+				}
+				std::cout << row4[a - 2];
+			}
+			else if (tolower(input[i]) == ' ')
+			{
+				std::cout << ' ';
+				break;
+			}
+		}
+	}
+
+	std::cout << std::endl;
+
+	return 0;
+}
