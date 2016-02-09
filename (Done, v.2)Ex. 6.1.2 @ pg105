@@ -1,0 +1,33 @@
+/* Ex. 6.1.2 @ pg105 */
+/* Version 2, improved after looking at textbook's sample solution and make improvements out of it. */
+
+/* Completely Working! */
+
+#include <iostream>
+
+int main(void)
+{
+	char c, s[] =
+		"`1234567890-="
+		"qwertyuiop[]\\"
+		"asdfghjkl;'"
+		"zxcvbnm,./";
+
+	while (std::cin.get(c))
+	{
+		c = tolower(c);
+
+		char *p = strchr(s, c);
+
+		if (p)
+		{
+			std::cout << *(p - 2);
+		}
+		else
+		{
+			std::cout << c;
+		}
+	}
+
+	return 0;
+}
