@@ -1,0 +1,95 @@
+//6.1.4 @ pg108
+/* Version 1, done prior to looking at textbook's solution. */
+
+//Completely Working!
+
+
+#include <iostream>
+#include <string>
+
+int count1[256], count2[256], sum[256], index = 0;
+
+char output[256];
+
+void flushArray(int *arrayToBeFlushed);
+
+int main(void)
+{
+	int repeatAmount = 0;
+
+	std::cin >> repeatAmount;
+	std::cin.ignore();
+
+
+	while (repeatAmount--)
+	{
+
+		std::string input1, input2;
+
+		std::getline(std::cin, input1);
+		std::getline(std::cin, input2);
+
+		for (int i = 0; i < (int)input1.size(); i++)
+		{
+			count1[tolower(input1[i])]++;
+		}
+
+		for (int i = 0; i < (int)input2.size(); i++)
+		{
+			count2[tolower(input2[i])]++;
+		}
+
+		for (int i = 0; i < 256; i++)
+		{
+			if (count1[i] != 0 && count2[i] != 0)
+			{
+				sum[i] = count1[i] + count2[i];
+			}
+		}
+
+		char c;
+
+		for (int i = 0; i < 256; i++)
+		{
+			if (sum[i] != 0)
+			{
+				c = i;
+				output[index] = c;
+				index++;
+			}
+		}
+
+		output[index] = '=';
+		index++;
+
+		flushArray(count1);
+		flushArray(count2);
+		flushArray(sum);
+	}
+
+	for (int i = 0; i < 256; i++)
+	{
+		if (output[i] == '=')
+		{
+			std::cout << "\n";
+		}
+		else if (output[i] == '\0')
+		{
+			break;
+		}
+		else
+		{
+			std::cout << output[i];
+		}
+	}
+
+	return 0;
+}
+
+void flushArray(int *arrayToBeFlushed)
+{
+	for (int i = 0; i < 256; i++)
+	{
+		arrayToBeFlushed[i] = 0;
+	}
+}
