@@ -1,0 +1,28 @@
+/* Ex. 6.2.4 @ pg119 */
+/* Version 2, improved after looking at textbook's sample solution and make improvements out of it. */
+
+/* Completely Working! */
+
+#include <iostream>
+
+int main(void)
+{
+
+	long long int S, D, area;
+
+	while (std::cin >> S >> D)
+	{
+		for (int i = 0; ; i++)
+		{
+			area = (S + (S + i)) * (i + 1) / 2;
+
+			if (area >= D)
+			{
+				std::cout << (S + i) << std::endl;
+				break;
+			}
+		}
+	}
+
+	return 0;
+}
