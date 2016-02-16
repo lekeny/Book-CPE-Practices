@@ -1,0 +1,36 @@
+/* Ex. 6.2.4 @ pg119 */
+/* Version 1, done prior to looking at textbook's solution. */
+
+/* Completely Working! */
+
+#include <iostream>
+
+int main(void)
+{
+	int smallerEdge, biggerEdge, upper, lower, upperHeight, lowerHeight, guestFirstDay, guestTargetDay;
+
+	std::cin >> guestFirstDay >> guestTargetDay;
+
+	upper = guestFirstDay;
+	lower = upper + 1;
+
+	while (1)
+	{
+
+		upperHeight = lower - upper + 1;
+		lowerHeight = (lower+1) - upper + 1;
+
+		smallerEdge = (upper + lower) * upperHeight / 2;
+		biggerEdge = (upper + (lower + 1)) * lowerHeight / 2;
+
+		if (guestTargetDay > smallerEdge && guestTargetDay <= biggerEdge)
+		{
+			std::cout << lower+1 << std::endl;
+			return 0;
+		}
+
+		lower++;
+	}
+
+	return 0;
+}
