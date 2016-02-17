@@ -1,0 +1,46 @@
+//* Ex. 6.2.6 @ pg123 */
+/* Version 1, done prior to looking at textbook's solution. */
+
+/* Completely Working */
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+int main(void)
+{
+	int a, b, sum = 0, caseCount = 0, caseAmount;
+
+	std::vector<std::string> output;
+
+	std::cin >> caseAmount;
+	std::cin.ignore();
+
+	output.resize(caseAmount);
+
+	for (int k = 0; k < caseAmount; k++)
+	{
+		std::cin >> a >> b;
+		std::cin.ignore();
+
+		sum = 0;
+		caseCount++;
+
+		for (int i = a; i <= b; i++)
+		{
+			if (i % 2 != 0)
+			{
+				sum += i;
+			}
+		}
+
+		output.at(k) = "Case " + std::to_string(caseCount) + ": " + std::to_string(sum);
+	}
+
+	for (int i = 0; i < caseAmount; i++)
+	{
+		std::cout << output.at(i) << std::endl;
+	}
+
+	return 0;
+}
