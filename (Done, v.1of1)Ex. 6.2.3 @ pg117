@@ -1,0 +1,26 @@
+//6.2.3 @pg117
+
+//Completely Working!
+
+#include <iostream>
+#include <iomanip>
+
+int main(void)
+{
+	int S;
+	int n, i;
+	float p;
+
+	std::cin >> S;
+
+	for (int k = 0; k < S; k++)
+	{
+		std::cin >> n >> p >> i;
+
+		float answer = (pow((1 - p), i - 1) * p) * (1 / (1 - pow(1 - p, n)));
+
+		std::cout << std::fixed << std::setprecision(4) << answer << std::endl;
+	}
+
+	return 0;
+}
