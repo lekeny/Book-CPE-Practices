@@ -1,0 +1,41 @@
+/* Ex. 6.2.6 @ pg123 */
+/* Version 2, improved after looking at textbook's sample solution and make improvements out of it. */
+
+/* Completely Working! */
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+int main(void)
+{
+	int a, b, d = 2, repeatAmount, startingPoint = 0;
+	std::vector<std::string> output;
+
+	std::cin >> repeatAmount;
+	output.resize(repeatAmount);
+
+	while (startingPoint++ != repeatAmount)
+	{
+		std::cin >> a >> b;
+		std::cin.ignore();
+
+		if (a % 2 == 0)
+			a++;
+		if (b % 2 == 0)
+			b--;
+
+		int n = (b - a) / d + 1;
+
+		int answer = (n * (a + b)) / 2;
+
+		output.at(startingPoint - 1) = "Case " + std::to_string(startingPoint) + ": " + std::to_string(answer);
+	}
+
+	for (int i = 0; i < output.size(); i++)
+	{
+		std::cout << output.at(i) << std::endl;
+	}
+
+	return 0;
+}
