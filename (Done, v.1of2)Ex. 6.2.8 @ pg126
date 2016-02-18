@@ -1,0 +1,103 @@
+/* Ex. 6.2.8 @ pg126 */
+/* Version 1, done prior to looking at textbook's solution. */
+
+/* Completely Working! */
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+void matrixCheck();
+int testCount = 1;
+std::vector<std::string>output;
+
+int main(void)
+{
+	int repeatAmount;
+
+	std::cin >> repeatAmount;
+	output.resize(repeatAmount);
+
+	for (int r = 0; r < repeatAmount; r++)
+	{
+		matrixCheck();
+	}
+
+	for (int i = 0; i < testCount - 1; i++)
+	{
+		std::cout << output.at(i) << std::endl;
+	}
+}
+
+void matrixCheck()
+{
+	std::vector<std::vector<int>> matrix;
+
+	int N;
+	std::cout << "N = ";
+	std::cin >> N;
+	matrix.resize(N);
+
+	for (int i = 0; i < matrix.size(); i++)
+	{
+		matrix[i].resize(N);
+	}
+
+	for (int i = 0; i < matrix.size(); i++)
+	{
+		for (int k = 0; k < matrix[i].size(); k++)
+		{
+			std::cin >> matrix[i][k];
+		}
+	}
+
+	std::vector<int> temp;
+	temp.resize(N);
+
+	int a = N - 1;
+	int b = 0;
+
+	//Horizontal Check.
+	for (int k = N - 1; k >= N / 2; k--)
+	{
+		for (int i = 0; i < N; i++)
+		{
+			temp[i] = matrix[k][a];
+			a--;
+			if (matrix[b][i] != temp[i])
+			{
+				output.at(testCount - 1) = "Test #" + std::to_string(testCount) + " : Non-symmetric.";
+				testCount++;
+				return ;
+			}
+
+		}
+		a = N - 1;
+		b++;
+	}
+
+	a = N - 1;
+	b = 0;
+
+	//Vertical Check.
+	for (int k = N - 1; k >= N / 2; k--)
+	{
+		for (int i = 0; i < N; i++)
+		{
+			temp[i] = matrix[a][k];
+			a--;
+			if (matrix[i][b] != temp[i])
+			{
+				output.at(testCount - 1) = "Test #" + std::to_string(testCount) + " : Non-symmetric.";
+				testCount++;
+				return ;
+			}
+		}
+		a = N - 1;
+		b++;
+	}
+
+	output.at(testCount - 1) = "Test #" + std::to_string(testCount) + " : Symmetric.";
+	testCount++;
+	return ;
+}
