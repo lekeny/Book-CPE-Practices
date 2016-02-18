@@ -1,0 +1,48 @@
+/* Ex. 6.2.7 @ pg124 */
+/* Version 1, done prior to looking at textbook's solution. */
+
+/* Completely Working! */
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+int main(void)
+{
+	int s, d, x, y, n;
+	std::vector<std::string> output;
+
+	std::cin >> n;
+	output.resize(n);
+
+	for (int i = 0; i < n; i++)
+	{
+		std::cin >> s >> d;
+
+		if (s < d)
+		{
+			output.at(i) = "impossible";
+			continue;
+		}
+
+		x = (d + s) / 2;
+		y = s - x;
+
+		if (x > y)
+		{
+			output.at(i) = std::to_string(x) + " " + std::to_string(y);
+		}
+		else
+		{
+			output.at(i) = std::to_string(y) + " " + std::to_string(x);
+		}
+
+	}
+
+	for (int i = 0; i < output.size(); i++)
+	{
+		std::cout << output.at(i) << std::endl;
+	}
+
+	return 0;
+}
