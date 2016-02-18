@@ -1,7 +1,6 @@
-/* Ex. 6.2.7 @ pg124 */
-/* Version 1, done prior to looking at textbook's solution. */
+//6.2.7 @pg124
 
-/* Completely Working! */
+//Completely Working!
 
 #include <iostream>
 #include <vector>
