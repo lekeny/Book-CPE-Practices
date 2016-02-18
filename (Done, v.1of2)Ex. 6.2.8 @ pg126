@@ -64,7 +64,7 @@ void matrixCheck()
 		{
 			temp[i] = matrix[k][a];
 			a--;
-			if (matrix[b][i] != temp[i])
+			if (matrix[b][i] != temp[i] || matrix[b][i] < 0 || temp[i] < 0)
 			{
 				output.at(testCount - 1) = "Test #" + std::to_string(testCount) + " : Non-symmetric.";
 				testCount++;
@@ -85,7 +85,7 @@ void matrixCheck()
 		{
 			temp[i] = matrix[a][k];
 			a--;
-			if (matrix[i][b] != temp[i])
+			if (matrix[i][b] != temp[i] | matrix[i][b] < 0 | temp[i] < 0)
 			{
 				output.at(testCount - 1) = "Test #" + std::to_string(testCount) + " : Non-symmetric.";
 				testCount++;
