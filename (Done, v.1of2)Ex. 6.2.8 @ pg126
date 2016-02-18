@@ -31,7 +31,7 @@ int main(void)
 
 void matrixCheck()
 {
-	std::vector<std::vector<int>> matrix;
+	std::vector<std::vector<signed long long int>> matrix;
 
 	int N;
 	std::cout << "N = ";
@@ -51,7 +51,7 @@ void matrixCheck()
 		}
 	}
 
-	std::vector<int> temp;
+	std::vector<signed long long int> temp;
 	temp.resize(N);
 
 	int a = N - 1;
@@ -68,9 +68,8 @@ void matrixCheck()
 			{
 				output.at(testCount - 1) = "Test #" + std::to_string(testCount) + " : Non-symmetric.";
 				testCount++;
-				return ;
+				return;
 			}
-
 		}
 		a = N - 1;
 		b++;
@@ -90,7 +89,7 @@ void matrixCheck()
 			{
 				output.at(testCount - 1) = "Test #" + std::to_string(testCount) + " : Non-symmetric.";
 				testCount++;
-				return ;
+				return;
 			}
 		}
 		a = N - 1;
@@ -99,5 +98,5 @@ void matrixCheck()
 
 	output.at(testCount - 1) = "Test #" + std::to_string(testCount) + " : Symmetric.";
 	testCount++;
-	return ;
+	return;
 }
