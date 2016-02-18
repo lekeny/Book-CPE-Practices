@@ -19,7 +19,7 @@ int main(void)
 	{
 		std::cin >> s >> d;
 
-		if (s < d)
+		if (s < d || s < 0 || d < 0)
 		{
 			output.at(i) = "impossible";
 			continue;
