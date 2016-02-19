@@ -1,0 +1,44 @@
+//* Ex. 6.2.9 @ pg128 */
+/* Version 1, done prior to looking at textbook's solution. */
+
+/* Completely Working */
+
+#include <iostream>
+#include <vector>
+
+int main(void)
+{
+	int a, b, squaredNumber, amountOfSquareNumbers = 0, amountOfInput = 0;
+	std::vector<int> output;
+
+	while (1)
+	{
+		amountOfSquareNumbers = 0;
+		std::cin >> a >> b;
+
+		if (a == 0 && b == 0)
+		{
+			break;
+		}
+		amountOfInput++;
+		output.resize(amountOfInput);
+
+		for (int i = a; i <= b; i++)
+		{
+			squaredNumber = sqrt(i);
+
+			if (squaredNumber == sqrt(i))
+			{
+				amountOfSquareNumbers++;
+			}
+		}
+		output.at(amountOfInput - 1) = amountOfSquareNumbers;
+	}
+
+	for (int i = 0; i < output.size(); i++)
+	{
+		std::cout << output.at(i) << std::endl;
+	}
+
+	return 0;
+}
