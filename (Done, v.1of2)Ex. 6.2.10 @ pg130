@@ -60,7 +60,7 @@ int isB2Sequence()
 		std::cin >> elements.at(i);
 		if (i != 0)
 		{
-			if (elements.at(i) < elements.at(i - 1))
+			if (elements.at(i) <= elements.at(i - 1))
 			{
 				isASequence = 0;
 			}
