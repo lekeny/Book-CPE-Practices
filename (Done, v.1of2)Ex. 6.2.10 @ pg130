@@ -1,0 +1,79 @@
+/* Ex. 6.2.10 @ pg130 */
+/* Version 1, done prior to looking at textbook's solution. */
+
+/* Completely Working */
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+const int MAX_PAIR_SUM_VALUE = 20000;
+
+int main(void)
+{
+	int pairSum[MAX_PAIR_SUM_VALUE] = {};
+	std::vector<int> elements;
+	std::vector<std::string> output;
+
+	int amountOfElements, isB2Sequence = 1, caseNumber = 0;
+
+	while (1)
+	{
+
+		std::cin >> amountOfElements;
+
+		if (amountOfElements == 0)
+		{
+			break;
+		}
+
+		caseNumber++;
+		output.resize(caseNumber);
+
+		memset(pairSum, 0, MAX_PAIR_SUM_VALUE);
+
+		elements.resize(amountOfElements);
+
+		for (int i = 0; i < amountOfElements; i++)
+		{
+			std::cin >> elements.at(i);
+		}
+
+		int sum = 0;
+		for (int i = 0; i < amountOfElements - 1; i++)
+		{
+			for (int k = i + 1; k < amountOfElements; k++)
+			{
+				sum = elements.at(i) + elements.at(k);
+				pairSum[sum]++;
+			}
+		}
+
+		for (int i = 0; i < MAX_PAIR_SUM_VALUE; i++)
+		{
+			if (pairSum[i] > 1)
+			{
+				isB2Sequence = 0;
+				break;
+			}
+		}
+
+		if (isB2Sequence == 1)
+		{
+			output.at(caseNumber - 1) = "Case #" + std::to_string(caseNumber) + ": It is a B2-Sequence.";
+		}
+		else
+		{
+			output.at(caseNumber - 1) = "Case #" + std::to_string(caseNumber) + ": It is not a B2-Sequence.";
+		}
+
+		isB2Sequence = 1;
+	}
+
+	for (int i = 0; i < caseNumber; i++)
+	{
+		std::cout << output.at(i) << std::endl << std::endl;
+	}
+
+	return 0;
+}
