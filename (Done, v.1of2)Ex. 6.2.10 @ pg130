@@ -19,7 +19,6 @@ int main(void)
 
 	while (1)
 	{
-
 		std::cin >> amountOfElements;
 
 		if (amountOfElements == 0)
