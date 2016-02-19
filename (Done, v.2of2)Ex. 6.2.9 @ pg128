@@ -1,0 +1,49 @@
+/* Ex. 6.2.9 @ pg128 */
+/* Version 2, improved after looking at textbook's sample solution and make improvements out of it. */
+
+/* Completely Working! */
+
+#include <iostream>
+#include <vector>
+
+const int MAX_DATA_RANGE = 100001;
+
+int main(void)
+{
+	int a, b, outputAmount = 0;
+
+	int s[MAX_DATA_RANGE] = {};
+
+	std::vector<int> output;
+
+	for (int i = 1; i * i < MAX_DATA_RANGE; i++)
+	{
+		s[i*i] = 1;
+	}
+
+	for (int i = 1; i < MAX_DATA_RANGE; i++)
+	{
+		s[i] += s[i - 1];
+	}
+
+	while(1)
+	{
+		std::cin >> a >> b;
+
+		if (a == 0 && b == 0)
+		{
+			break;
+		}
+
+		outputAmount++;
+		output.resize(outputAmount);
+		output.at(outputAmount-1) = s[b] - s[a - 1];
+	}
+
+	for (int i = 0; i < output.size(); i++)
+	{
+		std::cout << output.at(i) << std::endl;
+	}
+
+	return 0;
+}
