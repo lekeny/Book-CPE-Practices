@@ -1,0 +1,49 @@
+/* Ex. 6.2.10 @ pg130 */
+/* Version 2, improved after looking at textbook's sample solution and make improvements out of it. */
+
+/* Completely Working! */
+
+#include <iostream>
+
+int main(void)
+{
+	int sequenceElements[1005] = { 0 }, numberOfElements, caseNumber = 0;
+	while (std::cin >> numberOfElements)
+	{
+		int b2 = 0;
+		for (int i = 1; i <= numberOfElements; i++)
+		{
+			std::cin >> sequenceElements[i];
+			if (sequenceElements[i] <= sequenceElements[i - 1])
+			{
+				b2 = 1;
+			}
+		}
+
+		int B2SequenceChecker[20005] = {};
+
+		if (b2 == 0)
+		{
+			for (int i = 1; i <= numberOfElements; i++)
+			{
+				for (int j = i; j <= numberOfElements; j++)
+				{
+					if (B2SequenceChecker[sequenceElements[i] + sequenceElements[j]] != 0)
+					{
+						b2 = 1;
+					}
+					B2SequenceChecker[sequenceElements[i] + sequenceElements[j]] = 1;
+				}
+			}
+		}
+
+		std::cout << "Case #" << ++caseNumber << ": It is ";
+		if (b2)
+		{
+			std::cout << "not ";
+		}
+		std::cout << "a B2-Sequence.\n\n";
+	}
+
+	return 0;
+}
