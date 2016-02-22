@@ -1,6 +1,7 @@
-//Convert a number from any base back to base 10.
+/* Ex. 6.3.1 @ pg133 */
+/* Version 1, done prior to looking at textbook's solution. */
 
-//Completely Working!
+/* Completely Working */
 
 #include <iostream>
 #include <string>
